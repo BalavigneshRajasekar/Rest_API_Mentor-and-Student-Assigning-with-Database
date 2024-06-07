@@ -4,6 +4,8 @@ Created an RestAPI with multiple endpoints to create a student and mentor, with 
 
 ## Documentation
 
+POSTMAN DOCUMENT : https://documenter.getpostman.com/view/35282596/2sA3XJmkBs
+
 API
 
 ```bash
