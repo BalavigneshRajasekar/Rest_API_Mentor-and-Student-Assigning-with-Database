@@ -142,6 +142,11 @@ router.get("/getStudents/:mentorId", async (req, res) => {
     if (!mentor) {
       return res.status(400).json({ msg: "Mentor not found" });
     }
+    if (mentor) {
+      if (mentor.students.length === 0) {
+        return res.status(400).json({ msg: "Mentor has no students" });
+      }
+    }
     res.status(200).json({ msg: mentor.students });
   } catch (err) {
     res.status(500).json({ msg: err.message, data: "server error" });
