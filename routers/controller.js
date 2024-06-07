@@ -95,8 +95,14 @@ router.put("/changeMentor/:student", async (req, res) => {
       // This will check student exist or not
       return res.status(400).json({ msg: "Student not found" });
     }
+    //This will handle If student has currentMentor
     if (checkStudent.currentMentor !== null) {
-      //This will handle If student has currentMentor
+      //This will check if the student is already assigned to the same mentor or not
+      if (checkMentor.students.includes(req.params.student)) {
+        return res
+          .status(400)
+          .json({ msg: "Student already assigned to you " });
+      }
       const mentor = checkStudent.currentMentor;
 
       const pastMentor = await Mentor.findOne({ mentorName: mentor });
